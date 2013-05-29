@@ -26,6 +26,7 @@ $(function() {
         model: user
     }).render();
 
+
     $('body').append(form.el);
 });
 
