@@ -28,9 +28,11 @@
                     <div class="item">Дополнительная<br />информация</div>
                     <div class="Clear"></div>
                 </div>
+<!--block 1-->
+<script id="form_block_1" type="text/html">
                 <div class="formBlock1">
                     <div class="line">
-                        <span class="textfield"><input type="text" class="formField" id="maf_last_name" name="maf_last_name" hint="Фамилия" value="" /></span>
+                        <span class="textfield" data-editors="maf_last_name"></span>
                         <span class="textfield"><input type="text" class="formField" id="maf_first_name" name="maf_first_name" hint="Имя" value="" /></span>
                         <span class="textfield"><input type="text" class="formField" id="maf_second_name" name="maf_second_name" hint="Отчество" value="" /></span>
                         <span class="textfield">
@@ -40,7 +42,7 @@
                     </div>
                     <div class="line">
                         <span class="textfield"><input type="text" class="formField maskBirthDate" id="maf_birth_date" name="maf_birth_date" hint="Дата рождения" value="" /></span>
-                        <span class="textfield"><input type="text" class="formField" id="maf_email" name="maf_email" hint="Электронная почта" value="" /></span>
+                        <span class="textfield" data-editors="maf_email"></span>
                         <span class="fieldsBlock" style="margin-left:4px;">
                             <span class="txt3">Пол:</span>&nbsp;<input type="radio" id="maf_sex_female" name="maf_sex" />&nbsp;<label for="maf_sex_female">Ж</label>&nbsp;<input type="radio" id="maf_sex_male" name="maf_sex" checked="checked" />&nbsp;<label for="maf_sex_male">М</label>
                         </span>
@@ -55,6 +57,8 @@
                         <span class="sendAgain"><input id="send_sms_again" type="button" value="Повторить отправку SMS" /></span>
                     </div>
                 </div>
+            </script>
+<!--/block 1-->
             </div>
             </div>
             <div class="block_b"><div class="rbg"></div><div class="bg"></div></div>
@@ -245,55 +249,55 @@
                                 <input type="radio" name="maf_way_to_get" checked="checked" id="maf_way_to_get_courier" /> &nbsp; <label>Курьером</label> &nbsp;&nbsp;&nbsp;
                                 <input type="radio" name="maf_way_to_get" id="maf_way_to_get_office" /> &nbsp; <label>В офисе</label>
                                 <div class="citySelect" style="display: none;">
-                                    
+
                                         <span id="city_957">Москва</span>
-                                    
+
                                         <span id="city_973">Санкт-Петербург</span>
-                                    
+
                                         <span id="city_988">Краснодар</span>
-                                    
+
                                         <span id="city_989">Новороссийск</span>
-                                    
+
                                     <input name="maf_city_office" id="maf_city_office" type="hidden" value="Москва" />
                                 </div>
 
-                                
+
                                     <span id="city_957_offices" class="offices" style="display: none;">
-                                        
+
                                             <div class="item">
                                                 <input type="radio" checked="checked" name="office957" style="display: inline-block;" value="119334, Москва, Ленинский проспект, 30"/> &nbsp; <label>119334, Москва, Ленинский проспект, 30</label>
                                             </div>
-                                        
+
                                             <div class="item">
                                                 <input type="radio"  name="office957" style="display: inline-block;" value="123610, Москва, Краснопресненская набережная, 12"/> &nbsp; <label>123610, Москва, Краснопресненская набережная, 12</label>
                                             </div>
-                                        
+
                                     </span>
-                                
+
                                     <span id="city_973_offices" class="offices" style="display: none;">
-                                        
+
                                             <div class="item">
                                                 <input type="radio" checked="checked" name="office973" style="display: inline-block;" value="191186, Санкт-Петербург, Аптекарский пер., 4, помещение 14Н, лит. А"/> &nbsp; <label>191186, Санкт-Петербург, Аптекарский пер., 4, помещение 14Н, лит. А</label>
                                             </div>
-                                        
+
                                     </span>
-                                
+
                                     <span id="city_988_offices" class="offices" style="display: none;">
-                                        
+
                                             <div class="item">
                                                 <input type="radio" checked="checked" name="office988" style="display: inline-block;" value="350000, Краснодар, ул. Красноармейская/Гоголя, 43/68"/> &nbsp; <label>350000, Краснодар, ул. Красноармейская/Гоголя, 43/68</label>
                                             </div>
-                                        
+
                                     </span>
-                                
+
                                     <span id="city_989_offices" class="offices" style="display: none;">
-                                        
+
                                             <div class="item">
                                                 <input type="radio" checked="checked" name="office989" style="display: inline-block;" value="353900, Новороссийск, ул. Советов, 7"/> &nbsp; <label>353900, Новороссийск, ул. Советов, 7</label>
                                             </div>
-                                        
+
                                     </span>
-                                
+
                                 <span style="display: none;" class="txt7 redLightError">Выберите адрес офиса</span>
 
                                 <div class="address" >
@@ -320,7 +324,7 @@
                                     <span class="txt2">Код, присланный по sms</span>
                                     <span id="maf_check_code_error" class="error" style="display:none;">Код введен неверно</span>
                                 </div>
-                                
+
                             </div>
                             <div class="rCol">
                                 <div class="item">
@@ -386,6 +390,7 @@
   <script src="js/libs/backbone-1.0.0.js"></script>
   <script src="js/libs/backbone.marionette.js"></script>
   <script src="js/libs/backbone-forms.js"></script>
+  <script src="js/libs/list.js"></script>
   <script src="js/app.js"></script>
   <script src="js/placeholder.js"></script>
 
