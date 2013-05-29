@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Form1</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+
+    <div class="center">
+        <div class ="what">
+
+          <div class="questionnaire">
+            <div class="block_t"><div class="rbg"></div><div class="bg"></div></div>
+            <div class="block_bgr">
+            <div class="block_bg">
+                <div class="txtBlock">
+                    <h1>Заполните анкету и станьте клиентом Банка</h1>
+                </div>
+                <div class="switcherBlock">
+                    <div class="switcher"><div class="progress" style="width:75px;"><div class="bullet"></div></div></div>
+                    <div class="item activeSwitcher">Основные<br />данные</div>
+                    <div class="item">Персональные<br />данные</div>
+                    <div class="item">Контактная<br />информация</div>
+                    <div class="item">Дополнительная<br />информация</div>
+                    <div class="Clear"></div>
+                </div>
+                <div class="formBlock1">
+                    <div class="line">
+                        <span class="textfield"><input type="text" class="formField" id="maf_last_name" name="maf_last_name" hint="Фамилия" value="" /></span>
+                        <span class="textfield"><input type="text" class="formField" id="maf_first_name" name="maf_first_name" hint="Имя" value="" /></span>
+                        <span class="textfield"><input type="text" class="formField" id="maf_second_name" name="maf_second_name" hint="Отчество" value="" /></span>
+                        <span class="textfield">
+                            <input type="text" class="formField maskPhone" id="maf_mobile_phone" name="maf_mobile_phone" hint="+7 (916) 123-45-67" value="" />
+                            <span class="error">Такой номер уже зарегистрирован</span>
+                        </span>
+                    </div>
+                    <div class="line">
+                        <span class="textfield"><input type="text" class="formField maskBirthDate" id="maf_birth_date" name="maf_birth_date" hint="Дата рождения" value="" /></span>
+                        <span class="textfield"><input type="text" class="formField" id="maf_email" name="maf_email" hint="Электронная почта" value="" /></span>
+                        <span class="fieldsBlock" style="margin-left:4px;">
+                            <span class="txt3">Пол:</span>&nbsp;<input type="radio" id="maf_sex_female" name="maf_sex" />&nbsp;<label for="maf_sex_female">Ж</label>&nbsp;<input type="radio" id="maf_sex_male" name="maf_sex" checked="checked" />&nbsp;<label for="maf_sex_male">М</label>
+                        </span>
+                    </div>
+                    <div class="line">
+                        <div class="item accept-rules">
+                            <input type="checkbox" id="maf_accept_rules" name="maf_accept_rules" /> <label id="maf_accept_rules_label">Указывая свои данные в&nbsp;этой анкете, я&nbsp;даю свое согласие на&nbsp;их&nbsp;обработку Банком. <a href="#" id="maf_accept_conditions_link">Подробнее</a></label>
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <span><input id="first_step_submit" type="button" value="Далее" /></span>
+                        <span class="sendAgain"><input id="send_sms_again" type="button" value="Повторить отправку SMS" /></span>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="block_b"><div class="rbg"></div><div class="bg"></div></div>
+            <div id="maf_full_form" class="formBlock2" style="">
+                <div class="block_bg1">
+                    <a href="#maf_close_form" id="maf_close_form_btn" class="btnClose"></a>
+                    <div id="maf_full_form_main" class="block">
+                        <div class="step1" style="">
+                            <h2>Персональные данные</h2>
+                            <p class="txt1">Пожалуйста, продолжите заполнение всех полей анкеты. Чтобы сэкономить ваше время при оформлении банковского договора, в отделении Банка или через Call-центр, необходимо вводить информацию точно как в паспорте. Важно точно указать большие и маленькие буквы, сокращения и знаки препинания.</p>
+                            <p class="txt1">На основе введенных вами данных в Банке будет подготовлен договор, который вам останется только подписать! Договор можно будет получить в отделении Банка.</p>
+                            <div class="lCol">
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField" id="maf_zagran_fio" name="maf_zagran_fio" hint="Petrov Petr" value="" /></span>
+                                    <span class="txt2">Фамилия Имя латинскими символами (как в загран. паспорте)</span>
+                                </div>
+                            </div>
+                            <div class="rCol">
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField" id="maf_changed_fio" name="maf_changed_fio" hint="Петров Петр Петрович" value="" /></span>
+                                    <span class="txt2">Ф.И.О. Если менялись</span>
+                                </div>
+                            </div>
+                            <div class="Clear"></div>
+                            <div class="lCol">
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField" id="maf_passport_seria" name="maf_passport_seria" hint="9900" value="" maxlength="4" /></span>
+                                    <span class="txt2">Серия паспорта</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField" id="maf_passport_number" name="maf_passport_number" hint="123456" value="" maxlength="6" /></span>
+                                    <span class="txt2">Номер паспорта</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField maskDate" id="maf_passport_issue" name="maf_passport_issue" hint="19.07.2002" value="" /></span>
+                                    <span class="txt2">Дата выдачи</span>
+                                </div>
+                            </div>
+                            <div class="rCol">
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField" id="maf_passport_organisation" name="maf_passport_organisation" hint="Центральным РУВД" value="" /></span>
+                                    <span class="txt2">Выдан</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField" id="maf_passport_code" name="maf_passport_code" hint="123-456" value="" maxlength="7" /></span>
+                                    <span class="txt2">Код подразделения</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField" id="maf_birth_place" name="maf_birth_place" hint="г. Москва" value="" /></span>
+                                    <span class="txt2">Место рождения (как в паспорте)</span>
+                                </div>
+                            </div>
+                            <div class="Clear"></div>
+                            <div class="item">
+                                <div class="lCol">
+                                    <p>
+                                        <span class="txt3" id="maf_foreign_relations_title">Принадлежите ли Вы (или Ваши родственники) к лицам, определенным в соответствии со <a href="#" id="maf_foreign_relations_link">ст. 7.3. 115-ФЗ</a>?</span>&nbsp;
+                                        <input type="radio" id="maf_foreign_relations_yes" name="maf_foreign_relations_flag" /> <label for="maf_foreign_relations_yes">Да</label> &nbsp;
+                                        <input type="radio" id="maf_foreign_relations_no" name="maf_foreign_relations_flag" /> <label for="maf_foreign_relations_no">Нет</label>
+                                    </p>
+                                </div>
+                                <div class="rCol" id="maf_foreign_relations_field">
+                                    <span class="textarea1"><textarea class="formTextarea" id="maf_foreign_relations" name="maf_foreign_relations" hint="Дополнительные сведения"></textarea></span>
+                                </div>
+                                <div class="Clear"></div>
+                            </div>
+                        </div>
+                        <div class="step2" style="">
+                            <h2>Контактная информация</h2>
+                            <div class="lCol">
+                                <p>Адрес прописки:</p>
+                                <div class="item" style="height:33px;"></div>
+                                <div class="item">
+                                    <span class="textfield width177"><input type="text" class="formField" id="maf_reg_index" name="maf_reg_index" hint="123456" value="" maxlength="7" /></span>
+                                    <span class="chkBlock">
+                                        <input id="maf_reg_index_forgot" type="checkbox" /> Не помню
+                                    </span>
+                                    <br />
+                                    <span class="txt2">Индекс</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField" id="maf_reg_region" name="maf_reg_region" hint="Москва" value="" /></span>
+                                    <br />
+                                    <span class="txt2">Регион, область, край</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield gray_bg"><input type="text" class="formField" id="maf_reg_city" name="maf_reg_city" hint="Зеленоград" value="" /></span>
+                                    <br />
+                                    <span class="txt2">Город, район</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield gray_bg"><input type="text" class="formField" id="maf_reg_town" name="maf_reg_town" hint="Терехово" value="" /></span>
+                                    <br />
+                                    <span class="txt2">Населенный пункт</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield gray_bg"><input type="text" class="formField" id="maf_reg_street" name="maf_reg_street" hint="Юных Ленинцев" value="" /></span>
+                                    <br />
+                                    <span class="txt2">Улица</span>
+                                </div>
+                                <div class="item">
+                                    <span class="item1">
+                                        <span class="textfield width177 gray_bg"><input type="text" class="formField" id="maf_reg_house" name="maf_reg_house" hint="33" value="" /></span>
+                                        <br />
+                                        <span class="txt2">Дом/корпус/строение</span>
+                                    </span>
+                                    <span class="item1">
+                                        <span class="textfield width177 gray_bg"><input type="text" class="formField" id="maf_reg_flat" name="maf_reg_flat" hint="123" value="" /></span>
+                                        <br />
+                                        <span class="txt2">Квартира</span>
+                                    </span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField maskDate" id="maf_register_date" name="maf_register_date" hint="09.05.2000" value="" /></span>
+                                    <span class="txt2">Дата регистрации</span>
+                                </div>
+                            </div>
+                            <div class="rCol">
+                                <p>Адрес проживания:</p>
+                                <div class="item" style="height:33px;">
+                                    <span class="chkBlock">
+                                        <input type="checkbox" id="maf_same_address" name="maf_same_address" />
+                                        <label for="maf_same_address">Совпадает с адресом прописки</label>
+                                    </span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield width177"><input type="text" class="formField" id="maf_loc_index" name="maf_loc_index" hint="123456" value="" maxlength="6" /></span>
+                                    <span class="chkBlock">
+                                        <input id="maf_loc_index_forgot" type="checkbox" /> Не помню
+                                    </span>
+                                    <br />
+                                    <span class="txt2">Индекс</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField" id="maf_loc_region" name="maf_loc_region" hint="Московская область" value="" /></span>
+                                    <br />
+                                    <span class="txt2">Регион, область, край</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield gray_bg"><input type="text" class="formField" id="maf_loc_city" name="maf_loc_city" hint="Химки" value="" /></span>
+                                    <br />
+                                    <span class="txt2">Город, район</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield gray_bg"><input type="text" class="formField" id="maf_loc_town" name="maf_loc_town" hint="Жуковка" value="" /></span>
+                                    <br />
+                                    <span class="txt2">Населенный пункт</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield gray_bg"><input type="text" class="formField" id="maf_loc_street" name="maf_loc_street" hint="Первомайская" value="" /></span>
+                                    <br />
+                                    <span class="txt2">Улица</span>
+                                </div>
+                                <div class="item">
+                                    <span class="item1">
+                                        <span class="textfield width177 gray_bg"><input type="text" class="formField" id="maf_loc_house" name="maf_loc_house" hint="15" value="" /></span>
+                                        <br />
+                                        <span class="txt2">Дом/корпус/строение</span>
+                                    </span>
+                                    <span class="item1">
+                                        <span class="textfield width177 gray_bg"><input type="text" class="formField" id="maf_loc_flat" name="maf_loc_flat" hint="99" value="" /></span>
+                                        <br />
+                                        <span class="txt2">Квартира</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="Clear"></div>
+                            <h3>Контакты для связи со мной:</h3>
+                            <div class="lCol">
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField maskPhone" id="maf_connect_mobile" name="maf_connect_mobile" hint="+7 (916) 123-45-67" value="" /></span>
+                                    <span class="txt2">Основной телефон для связи</span>
+                                </div>
+                            </div>
+                            <div class="rCol">
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField maskPhone" id="maf_connect_phone" name="maf_connect_phone" hint="+7 (495) 123-45-67" value="" /></span>
+                                    <span class="txt2" id="maf_connect_phone_title">Домашний телефон</span>
+                                </div>
+                            </div>
+                            <div class="Clear"></div>
+                        </div>
+                        <div class="step3" style="">
+                            <h2>Дополнительная информация</h2>
+                            <div class="stepBlock1">
+                                <div class="arrow"></div>
+                                <h2>Выбор способа получения карты</h2>
+                                <input type="radio" name="maf_way_to_get" checked="checked" id="maf_way_to_get_courier" /> &nbsp; <label>Курьером</label> &nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="maf_way_to_get" id="maf_way_to_get_office" /> &nbsp; <label>В офисе</label>
+                                <div class="citySelect" style="display: none;">
+                                    
+                                        <span id="city_957">Москва</span>
+                                    
+                                        <span id="city_973">Санкт-Петербург</span>
+                                    
+                                        <span id="city_988">Краснодар</span>
+                                    
+                                        <span id="city_989">Новороссийск</span>
+                                    
+                                    <input name="maf_city_office" id="maf_city_office" type="hidden" value="Москва" />
+                                </div>
+
+                                
+                                    <span id="city_957_offices" class="offices" style="display: none;">
+                                        
+                                            <div class="item">
+                                                <input type="radio" checked="checked" name="office957" style="display: inline-block;" value="119334, Москва, Ленинский проспект, 30"/> &nbsp; <label>119334, Москва, Ленинский проспект, 30</label>
+                                            </div>
+                                        
+                                            <div class="item">
+                                                <input type="radio"  name="office957" style="display: inline-block;" value="123610, Москва, Краснопресненская набережная, 12"/> &nbsp; <label>123610, Москва, Краснопресненская набережная, 12</label>
+                                            </div>
+                                        
+                                    </span>
+                                
+                                    <span id="city_973_offices" class="offices" style="display: none;">
+                                        
+                                            <div class="item">
+                                                <input type="radio" checked="checked" name="office973" style="display: inline-block;" value="191186, Санкт-Петербург, Аптекарский пер., 4, помещение 14Н, лит. А"/> &nbsp; <label>191186, Санкт-Петербург, Аптекарский пер., 4, помещение 14Н, лит. А</label>
+                                            </div>
+                                        
+                                    </span>
+                                
+                                    <span id="city_988_offices" class="offices" style="display: none;">
+                                        
+                                            <div class="item">
+                                                <input type="radio" checked="checked" name="office988" style="display: inline-block;" value="350000, Краснодар, ул. Красноармейская/Гоголя, 43/68"/> &nbsp; <label>350000, Краснодар, ул. Красноармейская/Гоголя, 43/68</label>
+                                            </div>
+                                        
+                                    </span>
+                                
+                                    <span id="city_989_offices" class="offices" style="display: none;">
+                                        
+                                            <div class="item">
+                                                <input type="radio" checked="checked" name="office989" style="display: inline-block;" value="353900, Новороссийск, ул. Советов, 7"/> &nbsp; <label>353900, Новороссийск, ул. Советов, 7</label>
+                                            </div>
+                                        
+                                    </span>
+                                
+                                <span style="display: none;" class="txt7 redLightError">Выберите адрес офиса</span>
+
+                                <div class="address" >
+                                    <div class="lCol">
+                                        <input type="radio" id="maf_delivery_living" checked="checked" /> &nbsp; <label>На адрес проживания</label> &nbsp;&nbsp;&nbsp;
+                                        <input type="radio" id="maf_delivery_register" /> &nbsp; <label>На адрес прописки</label>
+                                    </div>
+                                    <div class="rCol">
+                                        <span class="textfield">
+                                            <input type="text" name="maf_delivery_address" id="maf_delivery_address" value="" />
+                                        </span>
+                                        <span class="txt2">адрес доставки</span>
+                                    </div>
+                                    <div class="Clear"></div>
+                                </div>
+                            </div>
+                            <div class="lCol">
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField" id="maf_codeword" name="maf_codeword" hint="Пример: Байкал" value="" /></span>
+                                    <span class="txt2">Кодовое слово для идентификации</span>
+                                </div>
+                                <div class="item">
+                                    <span class="textfield"><input type="text" class="formField" id="maf_check_code" name="maf_check_code" hint="12345" value="" maxlength="5" /></span>
+                                    <span class="txt2">Код, присланный по sms</span>
+                                    <span id="maf_check_code_error" class="error" style="display:none;">Код введен неверно</span>
+                                </div>
+                                
+                            </div>
+                            <div class="rCol">
+                                <div class="item">
+                                    <span class="txt3">SMS-информирование</span> &nbsp;&nbsp;
+                                    <input type="radio" id="maf_is_sms_yes" name="maf_is_sms" checked="checked" /> <label for="maf_is_sms_yes">Да</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" id="maf_is_sms_no" name="maf_is_sms" /> <label for="maf_is_sms_no">Нет</label>
+                                </div>
+                                <div class="item">
+                                    <span class="txt3">Валюта счета</span></span> &nbsp;&nbsp;
+                                    <input type="checkbox" id="maf_currency_rur" name="maf_currency_rur" checked="checked" /> <label for="maf_currency_rur">Рубли</label> &nbsp;&nbsp;&nbsp;
+                                    <input type="checkbox" id="maf_currency_usd" name="maf_currency_usd" /> <label for="maf_currency_usd">Доллары</label> &nbsp;&nbsp;&nbsp;
+                                    <input type="checkbox" id="maf_currency_eur" name="maf_currency_eur" /> <label for="maf_currency_eur">Евро</label>
+                                </div>
+                                <div class="item">
+                                    <span class="txt6">Удобное время для звонка:</span>
+                                    <select id="maf_call_time" name="maf_call_time" style="width:190px;">
+                                        <option value="С 10:00 до 13:00">С 10:00 до 13:00</option>
+                                        <option value="С 13:00 до 16:00">С 13:00 до 16:00</option>
+                                        <option value="С 16:00 до 19:00">С 16:00 до 19:00</option>
+                                        <option value="С 19:00 до 21:00">С 19:00 до 21:00</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="Clear"></div>
+                            <input type="hidden" id="maf_address_living" name="maf_address_living" />
+                            <input type="hidden" id="maf_address_register" name="maf_address_register" />
+                        </div>
+                    </div>
+                    <div id="maf_full_form_mobile" class="sms_code">
+                        <div class="item">
+                            <span class="textfield"><input type="text" class="formField" id="maf_passport_seria_mobile" name="maf_passport_seria_mobile" hint="9900" value="" maxlength="5" /></span><br />
+                            <span class="txt2">Серия паспорта</span>
+                        </div>
+                        <div class="item">
+                            <span class="textfield"><input type="text" class="formField" id="maf_passport_number_mobile" name="maf_passport_number_mobile" hint="123456" value="" maxlength="6" /></span><br />
+                            <span class="txt2">Номер паспорта</span>
+                        </div>
+                        <div class="item">
+                            <span class="textfield"><input type="text" class="formField" id="maf_check_code_mobile" name="maf_check_code_mobile" hint="12345" value="" maxlength="5" /></span><br />
+                            <span class="txt2">Код, присланный по sms</span>
+                            <span id="maf_check_code_mobile_error" class="error" style="display:none;">Код введен неверно</span>
+                        </div>
+                    </div>
+                    <div class="btns">
+                        <a id="other_step_submit" href="#" class="btnNext">Далее</a>
+                        <a id="prev_step_submit" href="#" class="btnHidden">Назад</a>
+                        <div class="Clear"></div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        </div>
+    </div>
+
+
+
+
+  <script src="js/libs/jquery-1.9.1.js"></script>
+  <script src="js/libs/handlebars-1.0.0-rc.4.js"></script>
+  <script src="js/libs/json2.js"></script>
+  <script src="js/libs/underscore-1.4.4.js"></script>
+  <script src="js/libs/backbone-1.0.0.js"></script>
+  <script src="js/libs/backbone.marionette.js"></script>
+  <script src="js/libs/backbone-forms.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/placeholder.js"></script>
+
+</body>
+</html>
