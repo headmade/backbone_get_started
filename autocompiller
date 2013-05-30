@@ -1,0 +1,8 @@
+#!/bin/sh
+while [ 1 ]; do
+    if [ "" != "`find ./js/ -type f -newer ./js/app.js`" ]  ; then
+        echo 'compile'
+        coffee -c ./js/*.coffee
+    fi
+    sleep 1
+done
