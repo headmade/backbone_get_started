@@ -21,6 +21,16 @@
       return Required;
 
     })();
+    Validates.Email = (function() {
+      function Email() {}
+
+      Email.prototype.valid = function(value) {
+        return /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i.test(value);
+      };
+
+      return Email;
+
+    })();
     Form1 = (function(_super) {
       __extends(Form1, _super);
 
@@ -32,6 +42,9 @@
       Form1.prototype.schema = {
         maf_first_name: {
           validators: ['required']
+        },
+        maf_email: {
+          validators: ['email']
         }
       };
 
@@ -51,7 +64,7 @@
     model = new Form1({
       maf_last_name: "",
       maf_first_name: "",
-      maf_second_name: ""
+      maf_email: ""
     });
     ViewClass = (function(_super) {
       __extends(ViewClass, _super);
@@ -89,7 +102,7 @@
 
         valid = true;
         for (key in this.model.attributes) {
-          valid && (valid = this.validatefield(key));
+          valid = this.validatefield(key) && valid;
         }
         return valid;
       };

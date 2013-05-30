@@ -9,10 +9,17 @@ $ ->
     valid:(value) ->
         value isnt ''
 
+  class Validates.Email
+
+    valid:(value) ->
+        /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i.test value
+
   class Form1 extends Backbone.Model
     schema:
         maf_first_name:
             validators: ['required']
+        maf_email:
+            validators: ['email']
 
     getValidators:(key) ->
         validators = []
@@ -22,7 +29,7 @@ $ ->
   model = new Form1
     maf_last_name:  ""
     maf_first_name: ""
-    maf_second_name: ""
+    maf_email: ""
 
   class ViewClass extends Backbone.View
 
@@ -51,7 +58,7 @@ $ ->
     validate: ->
       valid = true
       for key of @model.attributes
-          valid &&= @validatefield(key)
+          valid = @validatefield(key) && valid
       valid
 
     validatefield:(key)->
