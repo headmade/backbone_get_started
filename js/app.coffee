@@ -1,30 +1,46 @@
 $ ->
 
+  class Backbone.Form.editors.TbText extends Backbone.Form.editors.Text
+
+    initialize: (options) ->
+
+      console.log @
+
+
+  
+
+
   class User extends Backbone.Model
 
     schema:
-      title:
-        type: "Select"
-        options: ["", "Mr", "Mrs", "Ms"]
+      maf_last_name:
+        type: 'Text'
+        validators: ['required']
+      maf_email:
+        type: 'Text'
+        validators: ['email', 'required']
 
-      name: "Text"
-      email:
-        validators: ["required", "email"]
 
-      birthday: "Date"
-      password: "Password"
 
 
 
   user = new User
-    title: "Mr"
-    name: "Sterling Archer"
-    email: "sterling@isis.com"
-    birthday: new Date(1978, 6, 12)
-    password: "dangerzone"
-    notes: ["Buy new turtleneck", "Call Woodhouse", "Buy booze"]
+    maf_last_name: 'Sterling'
+    maf_email: 'sterlingi@sis.com'
 
 
-  form = new Backbone.Form model: user
+  user.bind "change", ->
+    console.log "Model has been changed!"
 
-  $("body").append form.render().el
+
+  console.log _.template($('#form_block_1').html())
+
+  form = new Backbone.Form
+    template: _.template($('#form_block_1').html())
+    model: user
+
+  console.log form.el
+
+  $(".block_bg").append form.render().el
+
+######################

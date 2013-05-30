@@ -1,6 +1,9 @@
 $ ->
 
-  model = new Backbone.Model name: "Edvatd"
+  model = new Backbone.Model
+    maf_last_name:  ""
+    maf_first_name: ""
+    maf_second_name: ""
 
   model.bind "change", ->
     $("#test-content").html JSON.stringify model.toJSON()
@@ -17,34 +20,19 @@ $ ->
 
     initialize: ->
 
-      #_.bindAll @
-
       @_modelBinder = new Backbone.ModelBinder
 
 
     render: ->
 
-      @setElement "#maf_first_name"
-
-      #@$el.val @model.get "name"
-
-      console.log @_modelBinder
+      @setElement $(".formBlock1")
 
       @_modelBinder.bind @model, @el
 
       @
 
-    set_log: ->
-
-      console.log 111
-      console.log @model.set "name", @$el.val()
-
-    #events:
-      #"change": "set_log"
 
 
   view = new ViewClass model: model
-
-  #view.render()
 
   console.log view.render()

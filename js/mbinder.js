@@ -7,7 +7,9 @@
     var ViewClass, model, view, _ref;
 
     model = new Backbone.Model({
-      name: "Edvatd"
+      maf_last_name: "",
+      maf_first_name: "",
+      maf_second_name: ""
     });
     model.bind("change", function() {
       return $("#test-content").html(JSON.stringify(model.toJSON()));
@@ -28,15 +30,9 @@
       };
 
       ViewClass.prototype.render = function() {
-        this.setElement("#maf_first_name");
-        console.log(this._modelBinder);
+        this.setElement($(".formBlock1"));
         this._modelBinder.bind(this.model, this.el);
         return this;
-      };
-
-      ViewClass.prototype.set_log = function() {
-        console.log(111);
-        return console.log(this.model.set("name", this.$el.val()));
       };
 
       return ViewClass;
