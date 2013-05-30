@@ -1,6 +1,6 @@
 #!/bin/sh
 while [ 1 ]; do
-    if [ "" != "`find ./js/ -type f -newer ./js/app.js`" ]  ; then
+    if [ "" != "`find ./js/ -type f -mnewer ./js/app.js`" ]  ; then
         echo 'compile'
         coffee -c ./js/*.coffee
     fi

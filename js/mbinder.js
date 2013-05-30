@@ -3,27 +3,69 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  $(function() {
-    var ViewClass, model, view, _ref;
+  String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  };
 
-    model = new Backbone.Model({
+  $(function() {
+    var Form1, Validates, ViewClass, model, view, _ref, _ref1;
+
+    Validates = {};
+    Validates.Required = (function() {
+      function Required() {}
+
+      Required.prototype.valid = function(value) {
+        return value !== '';
+      };
+
+      return Required;
+
+    })();
+    Form1 = (function(_super) {
+      __extends(Form1, _super);
+
+      function Form1() {
+        _ref = Form1.__super__.constructor.apply(this, arguments);
+        return _ref;
+      }
+
+      Form1.prototype.schema = {
+        maf_first_name: {
+          validators: ['required']
+        }
+      };
+
+      Form1.prototype.getValidators = function(key) {
+        var validators;
+
+        validators = [];
+        if (this.schema[key]) {
+          validators = this.schema[key]['validators'];
+        }
+        return validators;
+      };
+
+      return Form1;
+
+    })(Backbone.Model);
+    model = new Form1({
       maf_last_name: "",
       maf_first_name: "",
       maf_second_name: ""
     });
-    model.bind("change", function() {
-      return $("#test-content").html(JSON.stringify(model.toJSON()));
-    });
-    model.trigger("change");
     ViewClass = (function(_super) {
       __extends(ViewClass, _super);
 
       function ViewClass() {
-        _ref = ViewClass.__super__.constructor.apply(this, arguments);
-        return _ref;
+        _ref1 = ViewClass.__super__.constructor.apply(this, arguments);
+        return _ref1;
       }
 
       ViewClass.prototype._modelBinder = void 0;
+
+      ViewClass.prototype.events = {
+        "click #first_step_submit": "commit"
+      };
 
       ViewClass.prototype.initialize = function() {
         return this._modelBinder = new Backbone.ModelBinder;
@@ -33,6 +75,37 @@
         this.setElement($(".formBlock1"));
         this._modelBinder.bind(this.model, this.el);
         return this;
+      };
+
+      ViewClass.prototype.commit = function() {
+        if (this.validate()) {
+          console.log('commit');
+          return $("#test-content").html(JSON.stringify(model.toJSON()));
+        }
+      };
+
+      ViewClass.prototype.validate = function() {
+        var key, valid;
+
+        valid = true;
+        for (key in this.model.attributes) {
+          valid && (valid = this.validatefield(key));
+        }
+        return valid;
+      };
+
+      ViewClass.prototype.validatefield = function(key) {
+        var valid, validator, validators, value, _i, _len;
+
+        valid = true;
+        value = this.model.get(key);
+        validators = this.model.getValidators(key);
+        for (_i = 0, _len = validators.length; _i < _len; _i++) {
+          validator = validators[_i];
+          validator = eval("new Validates." + (validator.capitalize()));
+          valid && (valid = validator.valid(value));
+        }
+        return valid;
       };
 
       return ViewClass;
