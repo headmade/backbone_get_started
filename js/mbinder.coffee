@@ -13,7 +13,20 @@ String.prototype.capitalize = ->
     valid:(value) ->
         /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i.test value
 
-  class Form1 extends Backbone.Model
+  class Backbone.Form extends Backbone.Model
+    schema: {}
+    defaults: ->
+        attributes = {}
+        for key of @schema
+            attributes[key] = @schema[key]['defaults'] || ''
+        attributes
+
+    getValidators:(key) ->
+        validators = []
+        validators = @schema[key]['validators'] if @schema[key]
+        validators
+
+  class Form1 extends Backbone.Form
     schema:
         maf_first_name:
             validators: ['required']
@@ -30,19 +43,6 @@ String.prototype.capitalize = ->
         maf_accept_rules:
             validators: ['required']
 
-    defaults: ->
-        attributes = {}
-        for key of @schema
-            attributes[key] = @schema[key]['defaults'] || ''
-        attributes
-
-    getValidators:(key) ->
-        validators = []
-        validators = @schema[key]['validators'] if @schema[key]
-        validators
-$ ->
-
-  model = new Form1
   class ViewClass extends Backbone.View
 
     _modelBinder: undefined
@@ -92,6 +92,7 @@ $ ->
     clearError:(key) ->
         $("##{key}").parent().removeClass('textfieldError')
 
+$ ->
+  model = new Form1
   view = new ViewClass model: model
-
   console.log view.render()
