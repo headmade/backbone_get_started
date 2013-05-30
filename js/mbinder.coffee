@@ -1,13 +1,12 @@
 String.prototype.capitalize = ->
     @.charAt(0).toUpperCase() + @.slice(1);
 
-$ ->
   Validates = {}
 
   class Validates.Required
 
     valid:(value) ->
-        value isnt ''
+        value isnt '' && value
 
   class Validates.Email
 
@@ -18,19 +17,32 @@ $ ->
     schema:
         maf_first_name:
             validators: ['required']
+        maf_last_name:
+            validators: ['required']
         maf_email:
             validators: ['email']
+        maf_second_name:
+            validators: ['required']
+        maf_mobile_phone:
+            validators: ['required']
+        maf_birth_date:
+            validators: ['required']
+        maf_accept_rules:
+            validators: ['required']
+
+    defaults: ->
+        attributes = {}
+        for key of @schema
+            attributes[key] = @schema[key]['defaults'] || ''
+        attributes
 
     getValidators:(key) ->
         validators = []
         validators = @schema[key]['validators'] if @schema[key]
         validators
+$ ->
 
   model = new Form1
-    maf_last_name:  ""
-    maf_first_name: ""
-    maf_email: ""
-
   class ViewClass extends Backbone.View
 
     _modelBinder: undefined
