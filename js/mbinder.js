@@ -104,8 +104,21 @@
           validator = validators[_i];
           validator = eval("new Validates." + (validator.capitalize()));
           valid && (valid = validator.valid(value));
+          if (valid) {
+            this.clearError(key);
+          } else {
+            this.setError(key);
+          }
         }
         return valid;
+      };
+
+      ViewClass.prototype.setError = function(key) {
+        return $("#" + key).parent().addClass('textfieldError');
+      };
+
+      ViewClass.prototype.clearError = function(key) {
+        return $("#" + key).parent().removeClass('textfieldError');
       };
 
       return ViewClass;

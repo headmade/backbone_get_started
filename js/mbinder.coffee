@@ -61,11 +61,17 @@ $ ->
       for validator in validators
           validator = eval "new Validates.#{validator.capitalize()}"
           valid &&= validator.valid(value)
-          #unless valid
-          #@setError(key)
+          if valid
+            @clearError(key)
+          else
+            @setError(key)
       valid
 
+    setError:(key) ->
+        $("##{key}").parent().addClass('textfieldError')
 
+    clearError:(key) ->
+        $("##{key}").parent().removeClass('textfieldError')
 
   view = new ViewClass model: model
 
