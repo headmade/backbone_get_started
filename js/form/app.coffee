@@ -10,26 +10,31 @@ String.prototype.capitalize = ->
 
     initialize: ->
 
+      _.bindAll @
+
       @_modelBinder = new Backbone.ModelBinder
 
     render: ->
 
       @setElement $(".formBlock1")
 
+
       @_modelBinder.bind @model, @el
 
       @
 
     commit: ->
+      console.log @validate()
       if @validate()
           console.log 'commit'
-          $("#test-content").html JSON.stringify model.toJSON()
+          $("#test-content").html JSON.stringify @model.toJSON()
 
     validate: ->
       valid = true
       for key of @model.attributes
           valid = @validatefield(key) && valid
       valid
+
 
     validatefield:(key)->
       valid = true
@@ -44,11 +49,34 @@ String.prototype.capitalize = ->
             @setError(key)
       valid
 
+
     setError:(key) ->
+
+      $label  = $("##{key}_label")
+
+      if $label.length
+
+        $label.addClass "accessError"
+
+      else
+
         $("##{key}").parent().addClass('textfieldError')
 
+
     clearError:(key) ->
+
+      $label  = $("##{key}_label")
+
+      if $label.length
+
+        $label.removeClass "accessError"
+
+      else
+
         $("##{key}").parent().removeClass('textfieldError')
+
+
+
 
 $ ->
   model = new Form1

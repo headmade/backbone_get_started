@@ -2,7 +2,7 @@
 while [ 1 ]; do
     if [ "" != "`find ./js/ -type f -mnewer ./js/app.js`" ]  ; then
         echo 'compile'
-        coffee -c ./js/*.coffee
+        coffee -j ./js/app.js -c -o ./js/form/ ./js/
     fi
     sleep 1
 done
