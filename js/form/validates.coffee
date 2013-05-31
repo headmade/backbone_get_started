@@ -1,11 +1,21 @@
 Validates = {}
 
+class Validates.Base
+
+  regular: /^([a-zA-Z0-9_\.\-])$/
+
+  valid: (value) ->
+    @regular.test value    
+
+
+
 class Validates.Required
 
-    valid:(value) ->
-        value isnt '' && value
+  valid: (value) ->
+    value isnt '' && value
 
-class Validates.Email
 
-    valid:(value) ->
-        /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i.test value
+
+class Validates.Email extends Validates.Base
+
+  regular: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
