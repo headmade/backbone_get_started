@@ -1,8 +1,8 @@
 #!/bin/sh
 while [ 1 ]; do
-    if [ "" != "`find ./js/ -type f -mnewer ./js/app.js`" ]  ; then
+    if [ "" != "`find ./js -type f -mnewer ./js/app.js`" ]  ; then
         echo 'compile'
-        coffee -j ./js/app.js -c -o ./js/form/ ./js/
+        coffee -j ./js/app.js -c -o ./js/ ./js/
     fi
     sleep 1
 done
