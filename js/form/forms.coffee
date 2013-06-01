@@ -1,4 +1,4 @@
-class Form1 extends Backbone.Form
+class TBank.Form1 extends Backbone.Form
     schema:
         maf_first_name:
             validators: ['name']
@@ -18,7 +18,7 @@ class Form1 extends Backbone.Form
             validators: ['required']
 
 
-class Form2 extends Backbone.Form
+class TBank.Form2 extends Backbone.Form
     schema:
         maf_zagran_fio:
             validators: ['latinname']

@@ -1,4 +1,5 @@
-TBank = {}
+window.TBank = TBank = {}
+
 TBank.cookieSync = (method, model, options) ->
     $.cookie.json = true
     model_name = model.__proto__.constructor.name

@@ -18,3 +18,6 @@ class Masks.Pasportseria extends Masks.Base
 
 class Masks.Pasportcode extends Masks.Base
   mask: "999-999"
+
+class Masks.Pasportnumber extends Masks.Base
+  mask: "999999"
