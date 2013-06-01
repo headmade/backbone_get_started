@@ -51,7 +51,20 @@
   TBank = {};
 
   TBank.cookieSync = function(method, model, options) {
-    return console.log(method, model, options);
+    var attributes, model_name;
+
+    $.cookie.json = true;
+    model_name = model.__proto__.constructor.name;
+    switch (method) {
+      case 'read':
+        attributes = $.cookie(model_name);
+        if (attributes) {
+          return model.attributes = attributes;
+        }
+        break;
+      case 'create':
+        return $.cookie(model_name, model.toJSON());
+    }
   };
 
   Backbone.Form = (function(_super) {
@@ -72,6 +85,11 @@
         attributes[key] = this.schema[key]['defaults'] || '';
       }
       return attributes;
+    };
+
+    Form.prototype.initialize = function(options) {
+      Form.__super__.initialize.call(this, options);
+      return this.fetch();
     };
 
     Form.prototype.getValidators = function(key) {

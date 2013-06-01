@@ -1,6 +1,14 @@
 TBank = {}
 TBank.cookieSync = (method, model, options) ->
-    console.log method, model, options
+    $.cookie.json = true
+    model_name = model.__proto__.constructor.name
+    switch method
+        when 'read'
+            attributes = $.cookie model_name
+            if attributes
+                model.attributes = attributes
+        when 'create'
+            $.cookie model_name, model.toJSON()
 
 class Backbone.Form extends Backbone.Model
     schema: {}
@@ -9,6 +17,10 @@ class Backbone.Form extends Backbone.Model
         for key of @schema
             attributes[key] = @schema[key]['defaults'] || ''
         attributes
+
+    initialize:(options) ->
+        super options
+        @.fetch()
 
     getValidators:(key) ->
         validators = []
