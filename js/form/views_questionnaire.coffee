@@ -1,6 +1,7 @@
 Questionaire = {}
 class Questionaire.Layout extends TBank.Layout
-  els: [$(".formBlock1")]
+  els: ['.formBlock1']
+  namespace: 'Questionaire'
 
   afterRender: ->
     if @current_step isnt 1

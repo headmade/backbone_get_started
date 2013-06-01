@@ -2,14 +2,12 @@ class TBank.Layout extends Backbone.View
   views: []
   models: []
   els:[]
+  namespace: ''
   current_step: 1
 
   render: ->
-    model_name = model.__proto__.constructor.name
     @models[@current_step] ||= eval "new TBank.Form#{@current_step}"
-    #@views[@current_step]  ||=
-    console.log "new #{model_name}.Step#{@current_step}({$el: this.els[this.current_step], model: this.models[this.current_step]})"
-
+    @views[@current_step]  ||= eval "new #{@namespace}.Step#{@current_step}({el: '#{@els[@current_step-1]}', model: this.models[this.current_step] })"
     @views[@current_step].render()
     @afterRender()
 
@@ -30,8 +28,6 @@ class TBank.StepView extends Backbone.View
     @_modelBinder = new Backbone.ModelBinder
 
   render: ->
-
-    @setElement form_element
 
     @_modelBinder.bind @model, @el
 
