@@ -13,8 +13,8 @@ class Masks.Phone extends Masks.Base
 class Masks.Date extends Masks.Base
   mask: "99.99.9999"
 
-class Masks.Pasportseria
+class Masks.Pasportseria extends Masks.Base
   mask: "9999"
 
-class Masks.Pasportcode
+class Masks.Pasportcode extends Masks.Base
   mask: "999-999"

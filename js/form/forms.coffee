@@ -23,7 +23,7 @@ class Form2 extends Backbone.Form
         maf_zagran_fio:
             validators: ['latinname']
         maf_changed_fio:
-            
+            validators: []
         maf_passport_seria:
             validators: ['pasportseria']
             mask:       "pasportseria"
