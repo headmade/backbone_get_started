@@ -1,21 +1,37 @@
-class ViewClass extends Backbone.View
+class TBank.Layout extends Backbone.View
+  views: []
+  models: []
+  els:[]
+  current_step: 1
+
+  render: ->
+    model_name = model.__proto__.constructor.name
+    @models[@current_step] ||= eval "new TBank.Form#{@current_step}"
+    #@views[@current_step]  ||=
+    console.log "new #{model_name}.Step#{@current_step}({$el: this.els[this.current_step], model: this.models[this.current_step]})"
+
+    @views[@current_step].render()
+    @afterRender()
+
+  afterRender: ->
+
+  gotoStep: (step) =>
+
+    @current_step = step * 1
+
+    @render()
+
+class TBank.StepView extends Backbone.View
 
   _modelBinder: undefined
 
-  events:
-      "click #first_step_submit": "commit"
-
-
   initialize: ->
-
     _.bindAll @
-
     @_modelBinder = new Backbone.ModelBinder
-
 
   render: ->
 
-    @setElement $(".formBlock1")
+    @setElement form_element
 
     @_modelBinder.bind @model, @el
 
@@ -28,12 +44,8 @@ class ViewClass extends Backbone.View
 
   commit: ->
     console.log @model.toJSON()
-    if 1# @validate()
-        console.log 'commit'
+    if @validate()
         @model.save()
-        router.navigate "step2", trigger: true
-        $("#test-content").html JSON.stringify @model.toJSON()
-
 
   validate: ->
     valid = true

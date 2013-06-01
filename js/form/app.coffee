@@ -2,29 +2,32 @@ String.prototype.capitalize = ->
     @.charAt(0).toUpperCase() + @.slice(1)
 
 
+TBank = TBank || {}
 
-class Questionaire extends Backbone.View
-
+class TBank.Layout extends Backbone.View
+  views: []
+  models: []
   current_step: 1
-
-  events:
-    "click .btnClose": "gotoStep(0)"
-
-
-  initialize: ->
-
-    @collection     = []
-    @model          = []
-
-
 
   render: ->
 
-    @model[@current_step]       ||= eval "new TBank.Form#{@current_step}"
-    @collection[@current_step]  ||= new ViewClass model: @model[@current_step]
+    @models[@current_step]       ||= eval "new TBank.Form#{@current_step}"
+    @views[@current_step]  ||= new ViewClass model: @models[@current_step]
 
-    @collection[@current_step].render()
+    @views[@current_step].render()
+    @afterRender()
 
+  afterRender: ->
+
+  gotoStep: (step) =>
+
+    @current_step = step * 1
+
+    @render()
+
+class Questionaire extends TBank.Layout
+
+  afterRender: ->
     if @current_step isnt 1
 
       $(".formBlock2").show()
@@ -36,15 +39,6 @@ class Questionaire extends Backbone.View
       $(".formBlock2").hide()
       $(".step1").show().siblings().hide()
       $("#other_step_submit").attr "href", "#step1"
-
-
-
-  gotoStep: (step) =>
-
-    @current_step = step * 1
-
-    @render()
-
 
 
 class Router extends Backbone.Router
@@ -66,9 +60,9 @@ class Router extends Backbone.Router
 
     questView.gotoStep 1
     console.log "1st form"
-    
 
-  
+
+
   gotoStep: (step) ->
 
     #questmodel.set "current_step", step
@@ -77,11 +71,8 @@ class Router extends Backbone.Router
     questView.gotoStep step
 
 
-    
-
-  
 $ ->
-  window.questView = new Questionaire 
+  window.questView = new Questionaire
                           el: "#questionnaire"
                           current_step: 1
   questView.render()

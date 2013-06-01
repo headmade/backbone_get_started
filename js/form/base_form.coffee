@@ -20,7 +20,6 @@ class Backbone.Form extends Backbone.Model
         attributes
 
     initialize:(options) ->
-        super options
         @.fetch()
 
     getValidators:(key) ->
