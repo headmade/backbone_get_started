@@ -28,8 +28,9 @@ class ViewClass extends Backbone.View
 
   commit: ->
     console.log @model.toJSON()
-    if @validate()
+    if 1# @validate()
         console.log 'commit'
+        router.navigate "form2", trigger: true
         $("#test-content").html JSON.stringify @model.toJSON()
 
 
