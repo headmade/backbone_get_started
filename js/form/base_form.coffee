@@ -1,3 +1,7 @@
+TBank = {}
+TBank.cookieSync = (method, model, options) ->
+    console.log method, model, options
+
 class Backbone.Form extends Backbone.Model
     schema: {}
     defaults: ->
@@ -13,4 +17,8 @@ class Backbone.Form extends Backbone.Model
 
     getMask: (key) ->
         @schema[key]["mask"] if @schema[key]
+
+    sync: ->
+        TBank.cookieSync.apply @, arguments
+
 
