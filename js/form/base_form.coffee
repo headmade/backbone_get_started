@@ -11,3 +11,6 @@ class Backbone.Form extends Backbone.Model
         validators = @schema[key]['validators'] if @schema[key]
         validators
 
+    getMask: (key) ->
+        @schema[key]["mask"] if @schema[key]
+
