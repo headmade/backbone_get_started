@@ -207,6 +207,15 @@
 
   })(Masks.Base);
 
+  Masks.Pasportcode = (function() {
+    function Pasportcode() {}
+
+    Pasportcode.prototype.mask = "999-999";
+
+    return Pasportcode;
+
+  })();
+
   Validates = {};
 
   Validates.Base = (function() {
