@@ -5,19 +5,30 @@ class TBank.Layout extends Backbone.View
   namespace: ''
   current_step: 1
 
+
   render: ->
-    @models[@current_step] ||= eval "new TBank.Form#{@current_step}"
-    @views[@current_step]  ||= eval "new #{@namespace}.Step#{@current_step}({el: '#{@els[@current_step-1]}', model: this.models[this.current_step] })"
-    @views[@current_step].render()
+
+    @models[@current_step - 1] ||= eval "new TBank.Form#{@current_step}"
+    @views[@current_step- 1]  ||= eval "new #{@namespace}.Step#{@current_step}({el: '#{@els[@current_step-1]}', model: this.models[this.current_step - 1] })"
+    @views[@current_step- 1].render()
     @afterRender()
 
+
   afterRender: ->
+
 
   gotoStep: (step) =>
 
     @current_step = step * 1
 
     @render()
+
+
+  commitStep: (step) =>
+
+    @views[step - 1].commit()
+
+
 
 class TBank.StepView extends Backbone.View
 

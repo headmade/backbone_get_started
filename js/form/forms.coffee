@@ -31,12 +31,18 @@ class TBank.Form2 extends Backbone.Form
             validators: ['pasportnumber']
             mask:       'pasportnumber'
         maf_passport_issue:
-            validators: ['name']
+            validators: ['date']
             mask:       'date'
         maf_passport_organisation:
-            validators: ['name']
+            validators: ['simpletext']
         maf_passport_code:
-            validators: ['name']
+            validators: ['pasportcode']
             mask:       'pasportcode'
         maf_birth_place:
-            validators: ['name']
+            validators: ['simpletext']
+
+
+class TBank.Form3 extends Backbone.Form
+
+
+class TBank.Form4 extends Backbone.Form

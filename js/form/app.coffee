@@ -11,28 +11,51 @@ class Router extends Backbone.Router
   close_confirm: ->
 
     if confirm "Вы уверены что хотите закрыть анкету?"
-      router.navigate "step1", trigger: true
+      @navigate "step1", trigger: true
     else
-      router.navigate "step#{ questView.current_step }", trigger: false
+      @stayOnCurrent()
 
 
   first_form: ->
 
-    questView.gotoStep 1
-    console.log "1st form"
+    @gotoStep 1
+
+    #questView.gotoStep 1
+    #console.log "1st form"
 
 
 
   gotoStep: (step) ->
 
-    #questmodel.set "current_step", step
     console.log "Form №#{step}"
 
-    questView.gotoStep step
+    step = step * 1
+
+    current_step = questView.current_step
+
+    if current_step < step && ( step - current_step < 2 ) && questView.commitStep(current_step) && step
+      console.log "Move to NEXT step"
+      questView.gotoStep step
+
+    else if current_step > step && step
+      console.log "Move to PREV step"
+      questView.gotoStep step
+
+    else
+      console.log "Stand on CURRENT step"
+      @stayOnCurrent()
+      
+
+
+  stayOnCurrent: ->
+
+    @navigate "step#{ questView.current_step }", trigger: false
+
+
+    
 
 
 $ ->
-  console.log Questionaire
   window.questView = new Questionaire.Layout el: "#questionnaire", current_step: 1
   questView.render()
   window.router = new Router
